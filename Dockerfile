@@ -10,8 +10,14 @@ RUN apt-get update && \
  gstreamer1.0-plugins-ugly \
  gstreamer1.0-alsa \
  gstreamer1.0-libav \
- gstreamer1.0-alsa
+ gstreamer1.0-alsa \
+ build-essential autoconf automake libtool pkg-config
 
+WORKDIR /source
+RUN git clone https://github.com/hzeller/gmrender-resurrect.git && \
+ cd gmrender-resurrect && 
+ ./autogen.sh && \
+ ./configure && make && make install
 
 COPY dlna-render.sh /dlna-render.sh
 RUN apt-get clean && rm -rf /var/lib/apt/lists
