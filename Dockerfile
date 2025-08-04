@@ -13,11 +13,11 @@ RUN apt-get update && \
  gstreamer1.0-alsa \
  build-essential autoconf automake libtool pkg-config
 
-WORKDIR /source
-RUN git clone https://github.com/hzeller/gmrender-resurrect.git && \
- cd gmrender-resurrect && 
- ./autogen.sh && \
- ./configure && make && make install
+RUN git clone https://github.com/hzeller/gmrender-resurrect.git
+
+WORKDIR /gmrender-resurrect
+RUN ./autogen.sh
+RUN ./configure && make && make install
 
 COPY dlna-render.sh /dlna-render.sh
 RUN apt-get clean && rm -rf /var/lib/apt/lists
