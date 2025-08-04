@@ -10,7 +10,7 @@ RUN apt-get update && \
  gstreamer1.0-plugins-ugly \
  gstreamer1.0-alsa \
  gstreamer1.0-libav \
- gmediarender
+ gstreamer1.0-alsa
 
 
 COPY dlna-render.sh /dlna-render.sh
